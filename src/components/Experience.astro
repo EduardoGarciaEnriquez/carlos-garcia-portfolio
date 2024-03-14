@@ -1,0 +1,28 @@
+---
+import ExperienceItem from '../components/ExperienceItem.astro'
+
+const EXPERIENCE = [
+  {
+    company: 'Sissa Digital',
+    date: 'July 2022 - February 2024',
+    title: 'Front End Developer',
+    description:
+      "As a front-end developer, some of my daily tasks were fixing bugs, refactoring code, adding new features, managing software workflow with agile methodology, consuming APIs from back-end services, and handling data from API responses to update the user interface. Additionally, I often found myself refactoring projects for responsiveness and accessibility, upgrading class components to functional components using React hooks, and refactoring CSS files using SASS for sustainability and easier maintenance. Some of the technologies I've worked with are ReactJS, HTML5, CSS3, React-Redux, SASS, Ant Design, Axios, Redux-Saga, JavaScript, propTypes, git, and bitbucket."
+  },
+  {
+    company: 'Sissa Monitoring',
+    date: 'July 2021 - July 2022',
+    title: 'Jr. Front End Developer',
+    description:
+      'As a junior front-end developer, I tackled a variety of tasks daily, including bug fixes, code refactoring, and implementing new features. I learned to manage software workflows efficiently, following agile methodologies to stay organized and responsive to project needs. Consuming APIs from back-end services and handling data responses to update user interfaces were integral parts of my role. I also focused on refining projects for better responsiveness and accessibility, transitioning from class components to functional ones using React hooks, and optimizing CSS with SASS for long-term maintainability.'
+  }
+]
+---
+
+<ol class='relative border-s border-gray-200 dark:border-gray-700'>
+  {
+    EXPERIENCE.map((item) => {
+      return <ExperienceItem {...item} />
+    })
+  }
+</ol>

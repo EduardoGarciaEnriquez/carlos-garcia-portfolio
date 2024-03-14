@@ -1,0 +1,32 @@
+---
+import ProjectItem from './ProjectItem.astro'
+import NextJSIcon from './icons/NextJS.astro'
+import ReactIcon from './icons/React.astro'
+import TailwindIcon from './icons/Tailwind.astro'
+
+const TAGS = {
+  NEXT: { name: 'NextJS', icon: NextJSIcon },
+  REACT: { name: 'React', icon: ReactIcon },
+  TAILWIND: { name: 'TailwindCSS', icon: TailwindIcon }
+}
+
+const PROJECTS = [
+  {
+    title: 'Dino Lab | Design and 3D Printing',
+    description:
+      'Fully responsive landing page for a 3D printing and design company. Created from scratch with Next.js, React.js, TailwindCSS, and TypeScript. With dark and light theme.',
+    image: '/projects/dino-lab.webp',
+    tags: [TAGS.NEXT, TAGS.REACT, TAGS.TAILWIND],
+    link: 'https://dino-lab.vercel.app/',
+    github: 'https://github.com/EduardoGarciaEnriquez/dino_lab'
+  }
+]
+---
+
+{
+  PROJECTS.map((project) => {
+    return (
+      <ProjectItem {...project} />
+    )
+  })
+}
