@@ -6,42 +6,74 @@ import LinkedInIcon from '../components/icons/LinkedIn.astro'
 import GitHubIcon from '../components/icons/GitHub.astro'
 import NotionIcon from '../components/icons/Notion.astro'
 import GmailIcon from '../components/icons/Gmail.astro'
+import BriefCaseIcon from '../components/icons/BriefCase.astro'
+import CodeIcon from '../components/icons/Code.astro'
+
+import SectionContainer from '../components/SectionContainer.astro'
+
+import Experience from '../components/Experience.astro'
+import Projects from '../components/Projects.astro'
 ---
 
 <Layout title="Eduardo's portfolio | Front End Developer" description='Front End Developer with +3 experience years.'>
   <main>
-    <section class='my-40 mx-auto w-[90vw] max-w-[768px]'>
-      <h1 class='text-5xl font-bold flex items-center gap-5'>
-        Hi, Im Eduardo!
+    <SectionContainer id='about' class='pt-20 my-20 lg:my-52'>
+      <h1 class='text-3xl font-bold flex gap-4 flex-col-reverse md:flex-row md:text-5xlmd:items-center'>
+        Hi, I'm Eduardo!
 
-        <a
-          class='flex items-center'
-          href='https://www.linkedin.com/in/carlos-eduardo-garcia-enriquez/'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          <Badge>Aviable for hire</Badge>
-        </a>
+        <div class="flex items-center gap-4">
+          <img
+            src='https://media.licdn.com/dms/image/C4E03AQGXZLHGDRKLZQ/profile-displayphoto-shrink_800_800/0/1591214186506?e=1715212800&v=beta&t=pBPA-YOSXYAeD-SkDIyWKovRM_AKDJm_YVxG_hN98RA'
+            alt='personal photo'
+            class='size-10 md:size-12 rounded-full md:hidden block'
+          />
+
+          <a
+            class='flex items-center'
+            href='https://www.linkedin.com/in/carlos-eduardo-garcia-enriquez/'
+            target='_blank'
+            rel='noopener noreferrer'
+          >
+            <Badge>Aviable for hire</Badge>
+          </a>
+        </div>
       </h1>
-      <h2 class='text-2xl mt-5 text-wrap'>
-        Description Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, eveniet maxime, mollitia eum totam
-        cum ullam veritatis quod, unde expedita iste consectetur eligendi culpa fugit reprehenderit pariatur. Numquam,
-        reprehenderit iste.
+      <h2 class='text-xl md:text-2xl mt-5 text-wrap'>
+        I'm a <span class='text-yellow-200/90'>front-end developer</span> with a passion for creating beautiful and functional
+        websites. I love to craft and design user interfaces that are both visually appealing and easy to use. Always go
+        an extra mile to make sure the user experience is the best it can be.
       </h2>
-      <div class='mt-4 flex flex-wrap flex-row gap-2 justify-center items-center md:justify-normal'>
-        <Pill href='https://www.linkedin.com/in/carlos-eduardo-garcia-enriquez/'>
+      <div class='mt-8 flex flex-wrap gap-4 justify-between md:justify-normal'>
+        <Pill href='https://www.linkedin.com/in/carlos-eduardo-garcia-enriquez/' class='w-[45%] md:w-auto'>
           <LinkedInIcon class='w-4 h-4' /> Lined In
         </Pill>
-        <Pill href='https://github.com/EduardoGarciaEnriquez'>
+        <Pill href='https://github.com/EduardoGarciaEnriquez' class='w-[45%] md:w-auto'>
           <GitHubIcon class='w-4 h-4' /> GitHub
         </Pill>
-        <Pill href='https://autumn-lemonade-dc4.notion.site/Eduardo-Garc-a-ec3372b1707947a4b26464f3bc1f1790?pvs=4'>
+        <Pill
+          href='https://autumn-lemonade-dc4.notion.site/Eduardo-Garc-a-ec3372b1707947a4b26464f3bc1f1790?pvs=4'
+          class='w-[45%] md:w-auto'
+        >
           <NotionIcon class='w-4 h-4' /> Notion
         </Pill>
-        <Pill href='https://garciaenriquez.carloseduardo@gmail.com'>
+        <Pill href='mailto:garciaenriquez.carloseduardo@gmail.com' class='w-[45%] md:w-auto'>
           <GmailIcon class='w-4 h-4' /> Gmail
         </Pill>
       </div>
-    </section>
+    </SectionContainer>
+
+    <SectionContainer id='experience' class='pt-20 my-20 lg:my-52'>
+      <h2 class='text-3xl font-bold ml-[-10px] mb-4 flex items-center gap-x-2'>
+        <BriefCaseIcon /> Work experience
+      </h2>
+      <Experience />
+    </SectionContainer>
+
+    <SectionContainer id='projects' class='pt-20 my-20 lg:mt-52'>
+      <h2 class='text-3xl font-bold ml-[-10px] mb-4 flex items-center gap-x-2'>
+        <CodeIcon /> Projects
+      </h2>
+      <Projects />
+    </SectionContainer>
   </main>
 </Layout>
