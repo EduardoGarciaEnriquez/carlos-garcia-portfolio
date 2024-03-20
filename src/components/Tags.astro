@@ -1,0 +1,62 @@
+---
+import NextJSIcon from './icons/NextJS.astro'
+import ReactIcon from './icons/React.astro'
+import TailwindIcon from './icons/Tailwind.astro'
+import HTMLIcon from './icons/HTML.astro'
+import CSSIcon from './icons/CSS.astro'
+import JSIcon from './icons/JavaScript.astro'
+import TSIcon from './icons/TypeScript.astro'
+import AntDesignIcon from './icons/AntDesign.astro'
+import ReduxIcon from './icons/Redux.astro'
+import ReduxSagaIcon from './icons/ReduxSaga.astro'
+import SASSIcon from './icons/SASS.astro'
+import Git from './icons/Git.astro'
+import BootstrapIcon from './icons/Bootstrap.astro'
+import AstroIcon from './icons/AstroIcon.astro'
+import MaterialUIIcon from './icons/MaterialUI.astro'
+import GitHubIcon from './icons/GitHub.astro'
+import BitBucketIcon from './icons/BitBucket.astro'
+import AzureIcon from './icons/Azure.astro'
+import FilezillaIcon from './icons/Filezilla.astro'
+import PostmanIcon from './icons/Postman.astro'
+import FigmaIcon from './icons/Figma.astro'
+import VercelIcon from './icons/Vercel.astro'
+import DockerIcon from './icons/Docker.astro'
+import NPMIcon from './icons/NPM.astro'
+
+export enum TagType {
+  SOFTWARE = 'software',
+  FRAMEWORK = 'framework',
+  LANGUAGE = 'language',
+  HOSTING = 'hosting',
+  LIBRARY = 'library',
+  DESIGN = 'design'
+}
+
+export const TAGS = {
+  NEXT: { name: 'NextJS', icon: NextJSIcon, type: TagType.FRAMEWORK },
+  REACT: { name: 'React', icon: ReactIcon, type: TagType.LIBRARY },
+  TAILWIND: { name: 'TailwindCSS', icon: TailwindIcon, type: TagType.FRAMEWORK },
+  HTML: { name: 'HTML', icon: HTMLIcon, type: TagType.LANGUAGE },
+  CSS: { name: 'CSS', icon: CSSIcon, type: TagType.LANGUAGE },
+  JAVASCRIPT: { name: 'JavaScript', icon: JSIcon, type: TagType.LANGUAGE },
+  TYPESCRIPT: { name: 'TypeScript', icon: TSIcon, type: TagType.LANGUAGE },
+  ANTDESIGN: { name: 'AntDesign', icon: AntDesignIcon, type: TagType.FRAMEWORK },
+  REDUX: { name: 'Redux', icon: ReduxIcon, type: TagType.LIBRARY },
+  REDUXSAGA: { name: 'ReduxSaga', icon: ReduxSagaIcon, type: TagType.LIBRARY },
+  SASS: { name: 'SASS', icon: SASSIcon, type: TagType.LANGUAGE },
+  GIT: { name: 'Git', icon: Git, type: TagType.SOFTWARE },
+  BOOTSTRAP: { name: 'Bootstrap', icon: BootstrapIcon, type: TagType.FRAMEWORK },
+  ASTRO: { name: 'Astro', icon: AstroIcon, type: TagType.FRAMEWORK },
+  MATERIALUI: { name: 'MaterialUI', icon: MaterialUIIcon, type: TagType.FRAMEWORK },
+  GITHUB: { name: 'GitHub', icon: GitHubIcon, type: TagType.SOFTWARE },
+  BITBUCKET: { name: 'BitBucket', icon: BitBucketIcon, type: TagType.SOFTWARE },
+  AZURE: { name: 'Azure', icon: AzureIcon, type: TagType.SOFTWARE },
+  FILEZILLA: { name: 'Filezilla', icon: FilezillaIcon, type: TagType.SOFTWARE },
+  POSTMAN: { name: 'Postman', icon: PostmanIcon, type: TagType.SOFTWARE },
+  FIGMA: { name: 'Figma', icon: FigmaIcon, type: TagType.DESIGN },
+  VERCEL: { name: 'Vercel', icon: VercelIcon, type: TagType.HOSTING },
+  DOCKER: { name: 'Docker', icon: DockerIcon, type: TagType.SOFTWARE },
+  NPM: { name: 'NPM', icon: NPMIcon, type: TagType.SOFTWARE }
+}
+---

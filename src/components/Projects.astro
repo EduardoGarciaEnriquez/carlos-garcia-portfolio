@@ -1,14 +1,6 @@
 ---
 import ProjectItem from './ProjectItem.astro'
-import NextJSIcon from './icons/NextJS.astro'
-import ReactIcon from './icons/React.astro'
-import TailwindIcon from './icons/Tailwind.astro'
-
-const TAGS = {
-  NEXT: { name: 'NextJS', icon: NextJSIcon },
-  REACT: { name: 'React', icon: ReactIcon },
-  TAILWIND: { name: 'TailwindCSS', icon: TailwindIcon }
-}
+import { TAGS } from './Tags.astro'
 
 const PROJECTS = [
   {
@@ -25,8 +17,6 @@ const PROJECTS = [
 
 {
   PROJECTS.map((project) => {
-    return (
-      <ProjectItem {...project} />
-    )
+    return <ProjectItem {...project} />
   })
 }

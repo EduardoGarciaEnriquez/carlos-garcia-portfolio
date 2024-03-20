@@ -8,10 +8,12 @@ import NotionIcon from '../components/icons/Notion.astro'
 import GmailIcon from '../components/icons/Gmail.astro'
 import BriefCaseIcon from '../components/icons/BriefCase.astro'
 import CodeIcon from '../components/icons/Code.astro'
+import TerminalIcon from '../components/icons/Terminal.astro'
 
 import SectionContainer from '../components/SectionContainer.astro'
 
 import Experience from '../components/Experience.astro'
+import Stack from '../components/Stack.astro'
 import Projects from '../components/Projects.astro'
 ---
 
@@ -21,7 +23,7 @@ import Projects from '../components/Projects.astro'
       <h1 class='text-3xl font-bold flex gap-4 flex-col-reverse md:flex-row md:text-5xlmd:items-center'>
         Hi, I'm Eduardo!
 
-        <div class="flex items-center gap-4">
+        <div class='flex items-center gap-4'>
           <img
             src='https://media.licdn.com/dms/image/C4E03AQGXZLHGDRKLZQ/profile-displayphoto-shrink_800_800/0/1591214186506?e=1715212800&v=beta&t=pBPA-YOSXYAeD-SkDIyWKovRM_AKDJm_YVxG_hN98RA'
             alt='personal photo'
@@ -67,6 +69,14 @@ import Projects from '../components/Projects.astro'
         <BriefCaseIcon /> Work experience
       </h2>
       <Experience />
+    </SectionContainer>
+
+    <SectionContainer id='my-stack' class='pt-20 my-20 lg:my-52'>
+      <h2 class='text-3xl font-bold ml-[-10px] mb-4 flex items-center gap-x-2'>
+        <TerminalIcon /> My stack
+      </h2>
+      <p class='mt-2 text-pretty text-base font-normal text-gray-500 dark:text-gray-400'>This are some of the technologies I work with.</p>
+      <Stack />
     </SectionContainer>
 
     <SectionContainer id='projects' class='pt-20 my-20 lg:mt-52'>

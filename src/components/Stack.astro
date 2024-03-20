@@ -1,0 +1,16 @@
+---
+import { TAGS } from './Tags.astro'
+---
+
+<div class='mt-4 flex flex-wrap gap-4 justify-between'>
+  {
+    Object.values(TAGS).map((tag) => (
+      <div class='flex flex-col gap-2 items-center border border-white/10 bg-white/5 text-md p-3 md:rounded-sm rounded-full 
+      hover:bg-white/10 md:w-[20%]'>
+        <tag.icon class='size-5 md:size-11' />
+        <span class='hidden md:block text-sm'>{tag.name}</span>
+        <span class="hidden md:block bg-gray-100 text-gray-800 text-xs font-medium px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">{tag.type}</span>
+      </div>
+    ))
+  }
+</div>
