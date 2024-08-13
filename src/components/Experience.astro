@@ -3,16 +3,22 @@ import ExperienceItem from '../components/ExperienceItem.astro'
 
 const EXPERIENCE = [
   {
+    company: 'Femtasy.com',
+    date: 'June 2024 - August 2024',
+    title: 'Front End Developer',
+    description: `Maintain project documentation related to code standards and processes for individual apps and the monorepo. Update multilingual translations using Localazy. Refactor obsolete tests from Enzyme to the React Testing Library. Debug, report, and fix critical errors. Translate design mockups into responsive and functional pages and components using HTML, CSS/SASS, TypeScript, ReactJS, GraphQL, and Redux. Write clean, efficient, and maintainable code for front-end features while adhering to coding standards and best practices. Conduct code reviews to ensure quality and best practices, providing constructive feedback to team members. Follow the Kanban Agile methodology to manage and prioritize tasks. Review, test, fix, and update GitHub Dependabot pull requests. Update GraphQL auto-generated code and resolve related issues and errors. Create and update Storybook stories for ReactJS containers and components.`,
+  },
+  {
     company: 'Sissa Digital',
-    date: 'July 2021 - February 2024',
+    date: 'July 2021 - November 2023',
     title: 'Front End Developer',
     description:
-      "Responsible for translating design mockups into responsive web interfaces using HTML, CSS, and JavaScript frameworks, optimizing for performance and scalability, and integrating changes into CI/CD pipelines for automated testing and deployment. Documented code and processes to facilitate knowledge sharing and onboarding, ensured compatibility across browsers and devices, and maintained coding standards. Accomplishments include standardizing tools and documentation across 10 projects, reducing junior team queries and meeting time. Led Agile adoption, shortening development cycles for two products from 8-10 months to less than 4 months. Implemented end-to-end testing, reducing emergencies from 14 to 4 per month within a year. Refactored projects from ReactJS 16.4 to React 18, improving performance, accessibility, SEO, and adherence to best practices, raising project scores from an average of 68 to 96 in 2 years."
-  }
+      'Translate design mockups into responsive and functional web interfaces using HTML, CSS, and JavaScript frameworks. Focus on optimizing web pages for performance, speed, and scalability by refining code, compressing images, and managing other assets to enhance load times and user experience. Document code, processes, and best practices to facilitate knowledge sharing, support onboarding new team members, and maintain comprehensive project documentation. Ensure compatibility of web applications across various browsers and devices by thoroughly testing and debugging code on multiple platforms. Write clean, efficient, and maintainable code for front-end features and functionality, adhering to industry coding standards and best practices.',
+  },
 ]
 ---
 
-<ol class='relative border-s border-gray-200 dark:border-gray-700'>
+<ol class="relative border-s border-gray-200 dark:border-gray-700">
   {
     EXPERIENCE.map((item) => {
       return <ExperienceItem {...item} />
