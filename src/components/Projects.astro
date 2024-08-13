@@ -1,30 +1,151 @@
 ---
-import ProjectItem from "./ProjectItem.astro";
-import { TAGS } from "./Tags.astro";
+import ProjectItem from './ProjectItem.astro'
+import { TAGS } from './Tags.astro'
 
 const PROJECTS = [
   {
-    title: "Dino Lab | Design and 3D Printing",
+    title: 'Dino Lab | Design and 3D Printing',
     description:
-      "Fully responsive landing page for a 3D printing and design company. Created from scratch with Next.js, React.js, TailwindCSS, and TypeScript. With dark and light theme.",
-    image: "/projects/dino-lab.webp",
+      'Fully responsive landing page for a 3D printing and design company. Created from scratch with Next.js, React.js, TailwindCSS, and TypeScript. With dark and light theme.',
+    image: '/projects/dino-lab.webp',
     tags: [TAGS.NEXT, TAGS.REACT, TAGS.TAILWIND],
-    link: "https://dino-lab.vercel.app/",
-    github: "https://github.com/EduardoGarciaEnriquez/dino_lab",
+    link: 'https://dino-lab.vercel.app/',
+    github: 'https://github.com/EduardoGarciaEnriquez/dino_lab',
   },
   {
-    title: "Skull Game | Made with vanilla JavaScript",
-    description: "Game made with HTML5, CSS and vanilla JavaScript for a course.",
-    image: "/projects/skull-game.webp",
+    title: 'Skull Game | Made with vanilla JavaScript',
+    description:
+      'Game made with HTML5, CSS and vanilla JavaScript for a course.',
+    image: '/projects/skull-game.webp',
     tags: [TAGS.JAVASCRIPT, TAGS.CSS, TAGS.HTML],
-    link: "https://eduardogarciaenriquez.github.io/taller_practico_js/",
-    github: "https://github.com/EduardoGarciaEnriquez/taller_practico_js",
+    link: 'https://eduardogarciaenriquez.github.io/taller_practico_js/',
+    github: 'https://github.com/EduardoGarciaEnriquez/taller_practico_js',
   },
-];
+]
 ---
 
-{
+<!-- {
   PROJECTS.map((project) => {
     return <ProjectItem {...project} />;
   })
-}
+} -->
+<div id="controls-carousel" class="relative w-full" data-carousel="static">
+  <!-- Carousel wrapper -->
+  <div id="items" class="relative h-auto overflow-hidden rounded-lg">
+    <!-- Items -->
+    {
+      PROJECTS.map((project, i) => {
+        return (
+          <div
+            class={`duration-700 ease-in-out ${i !== 0 && 'hidden'}`}
+            id={`carousel-item-${i}`}
+            data-carousel-item
+          >
+            <ProjectItem {...project} />
+          </div>
+        )
+      })
+    }
+  </div>
+  <!-- Slider controls -->
+  <button
+    type="button"
+    class="absolute top-0 left-[-16px] flex items-center justify-center h-full cursor-pointer group focus:outline-none"
+    data-carousel-prev
+  >
+    <span
+      class="inline-flex items-center justify-center w-10 h-10 rounded-full dark:bg-white/30 bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none"
+    >
+      <svg
+        class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 6 10"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M5 1 1 5l4 4"></path>
+      </svg>
+      <span class="sr-only">Previous</span>
+    </span>
+  </button>
+  <button
+    type="button"
+    class="absolute top-0 right-[-16px] flex items-center justify-center h-full cursor-pointer group focus:outline-none"
+    data-carousel-next
+  >
+    <span
+      class="inline-flex items-center justify-center w-10 h-10 rounded-full dark:bg-white/30 bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none"
+    >
+      <svg
+        class="w-4 h-4 text-white dark:text-gray-800 rtl:rotate-180"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 6 10"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="m1 9 4-4-4-4"></path>
+      </svg>
+      <span class="sr-only">Next</span>
+    </span>
+  </button>
+</div>
+
+<script>
+  let current = 0
+
+  const slides = document.querySelectorAll('[data-carousel-item]').length - 1
+
+  document
+    .querySelector('[data-carousel-prev]')
+    ?.addEventListener('click', () => {
+      let prevSlide = slides
+
+      if (current === 0) {
+        current = slides
+        prevSlide = 0
+      } else {
+        current--
+        prevSlide = slides
+      }
+
+      document
+        .querySelector(`#carousel-item-${prevSlide}`)
+        ?.classList.add('hidden')
+
+      document
+        .querySelector(`#carousel-item-${current}`)
+        ?.classList.remove('hidden')
+    })
+
+  document
+    .querySelector('[data-carousel-next]')
+    ?.addEventListener('click', () => {
+      let prevSlide = current - 1
+
+      if (current === slides) {
+        current = 0
+        prevSlide = slides
+      } else {
+        current++
+        prevSlide = current - 1
+      }
+
+      document
+        .querySelector(`#carousel-item-${prevSlide}`)
+        ?.classList.add('hidden')
+
+      document
+        .querySelector(`#carousel-item-${current}`)
+        ?.classList.remove('hidden')
+    })
+</script>
