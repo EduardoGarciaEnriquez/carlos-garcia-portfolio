@@ -127,11 +127,11 @@ const PROJECTS = [
       let prevSlide = slides
 
       if (current === 0) {
-        current = slides
         prevSlide = 0
+        current = slides
       } else {
+        prevSlide = current
         current--
-        prevSlide = slides
       }
 
       document
