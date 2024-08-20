@@ -25,6 +25,8 @@ import VercelIcon from './icons/Vercel.astro'
 import NPMIcon from './icons/NPM.astro'
 import CypressIcon from './icons/Cypress.astro'
 import JestIcon from './icons/Jest.astro'
+import ViteIcon from './icons/Vite.astro'
+import VitestIcon from './icons/Vitest.astro'
 
 export enum TagType {
   SOFTWARE = 'software',
@@ -32,25 +34,42 @@ export enum TagType {
   LANGUAGE = 'language',
   HOSTING = 'hosting',
   LIBRARY = 'library',
-  DESIGN = 'design'
+  DESIGN = 'design',
+  COMPILER = 'compiler',
 }
 
 export const TAGS = {
   NEXT: { name: 'NextJS', icon: NextJSIcon, type: TagType.FRAMEWORK },
   REACT: { name: 'React', icon: ReactIcon, type: TagType.LIBRARY },
-  TAILWIND: { name: 'TailwindCSS', icon: TailwindIcon, type: TagType.FRAMEWORK },
+  TAILWIND: {
+    name: 'TailwindCSS',
+    icon: TailwindIcon,
+    type: TagType.FRAMEWORK,
+  },
   HTML: { name: 'HTML', icon: HTMLIcon, type: TagType.LANGUAGE },
   CSS: { name: 'CSS', icon: CSSIcon, type: TagType.LANGUAGE },
   JAVASCRIPT: { name: 'JavaScript', icon: JSIcon, type: TagType.LANGUAGE },
   TYPESCRIPT: { name: 'TypeScript', icon: TSIcon, type: TagType.LANGUAGE },
-  ANTDESIGN: { name: 'AntDesign', icon: AntDesignIcon, type: TagType.FRAMEWORK },
+  ANTDESIGN: {
+    name: 'AntDesign',
+    icon: AntDesignIcon,
+    type: TagType.FRAMEWORK,
+  },
   REDUX: { name: 'Redux', icon: ReduxIcon, type: TagType.LIBRARY },
   REDUXSAGA: { name: 'ReduxSaga', icon: ReduxSagaIcon, type: TagType.LIBRARY },
   SASS: { name: 'SASS', icon: SASSIcon, type: TagType.LANGUAGE },
   GIT: { name: 'Git', icon: Git, type: TagType.SOFTWARE },
-  BOOTSTRAP: { name: 'Bootstrap', icon: BootstrapIcon, type: TagType.FRAMEWORK },
+  BOOTSTRAP: {
+    name: 'Bootstrap',
+    icon: BootstrapIcon,
+    type: TagType.FRAMEWORK,
+  },
   ASTRO: { name: 'Astro', icon: AstroIcon, type: TagType.FRAMEWORK },
-  MATERIALUI: { name: 'MaterialUI', icon: MaterialUIIcon, type: TagType.FRAMEWORK },
+  MATERIALUI: {
+    name: 'MaterialUI',
+    icon: MaterialUIIcon,
+    type: TagType.FRAMEWORK,
+  },
   GITHUB: { name: 'GitHub', icon: GitHubIcon, type: TagType.SOFTWARE },
   BITBUCKET: { name: 'BitBucket', icon: BitBucketIcon, type: TagType.SOFTWARE },
   AZURE: { name: 'Azure', icon: AzureIcon, type: TagType.SOFTWARE },
@@ -61,5 +80,7 @@ export const TAGS = {
   NPM: { name: 'NPM', icon: NPMIcon, type: TagType.SOFTWARE },
   CYPRESS: { name: 'Cypress', icon: CypressIcon, type: TagType.FRAMEWORK },
   JEST: { name: 'Jest', icon: JestIcon, type: TagType.FRAMEWORK },
+  VITE: { name: 'Vite', icon: ViteIcon, type: TagType.FRAMEWORK },
+  VITEST: { name: 'Vitest', icon: VitestIcon, type: TagType.COMPILER },
 }
 ---
