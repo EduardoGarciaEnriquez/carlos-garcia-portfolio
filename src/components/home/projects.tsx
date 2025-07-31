@@ -12,7 +12,7 @@ const Projects = ({ projects }: { projects: IProject[] }) => {
       // arrows={window.innerWidth > 428 ? true : false}
       arrows={false}
       autoPlaySpeed={3000}
-      autoPlay={false}
+      autoPlay={true}
       infinite
       pauseOnHover={true}
       responsive={{
