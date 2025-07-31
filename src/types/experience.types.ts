@@ -2,37 +2,37 @@ export interface IExperience {
   id: number
   title: string
   company: string
-  startDate: string
-  endDate?: string | null
+  startDate: Date
+  endDate?: Date | null
   description: string
-  userId: string
-  employmentType: EmploymentType
-  location: Location | string
-  companyWebsite?: string
-}
-
-export interface IUpdateExperience {
-  title: string
-  company: string
-  startDate: Date | string
-  endDate?: Date | string | null
-  description: string
-  userId: string
-  employmentType: EmploymentType
+  userId: number
+  employmentType: EmploymentType | string
   location: Location | string
   companyWebsite?: string | null
 }
 
 export interface ICreateExperience {
   title: string
+  description: string
+  userId: number
   company: string
   startDate: string
-  endDate?: string | null
-  description: string
-  userId: string
-  employmentType: EmploymentType
+  endDate: string | null
+  employmentType: EmploymentType | string
   location: Location | string
-  companyWebsite?: string | null
+  companyWebsite: string | null
+}
+
+export interface IUpdateExperience {
+  title: string
+  description: string
+  userId: number
+  company: string
+  startDate: string
+  endDate: string | null
+  employmentType: EmploymentType | string
+  location: Location | string
+  companyWebsite: string | null
 }
 
 export enum EmploymentType {
