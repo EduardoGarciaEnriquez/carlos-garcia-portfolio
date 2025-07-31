@@ -10,7 +10,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input = ({ label, isDisabled, error, type, ...rest }: InputProps) => {
-  const [inputType, setInputType] = useState<'text' | 'password'>('text')
+  const [inputType, setInputType] = useState<'text' | 'password'>('password')
 
   if (type === 'password') {
     return (
