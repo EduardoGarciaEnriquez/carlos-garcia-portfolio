@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import EyeOffIcon from '../../icons/eye-off'
 import EyeOnIcon from '../../icons/eye-on'
 
@@ -41,6 +42,7 @@ const Input = ({ label, isDisabled, error, type, ...rest }: InputProps) => {
       </div>
     )
   }
+
   return (
     <div className="mb-4">
       <label className="block text-sm dark:text-gray-200 text-gray-800">
@@ -48,6 +50,7 @@ const Input = ({ label, isDisabled, error, type, ...rest }: InputProps) => {
       </label>
       <input
         {...rest}
+        type={type}
         className={`w-full p-2 border rounded-md transition-all duration-500 ease-in-out ${
           !isDisabled
             ? 'border-gray-300 dark:border-gray-500 dark:bg-gray-700 bg-gray-50 text-gray-600 dark:text-gray-300'
