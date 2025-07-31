@@ -73,9 +73,10 @@ export const fetchTechnologiesByPage = createAsyncThunk(
     },
     { dispatch }
   ) => {
+    const offset = page && (page - 1) * limit
     try {
       const response = await getTechnologiesByPageService({
-        offset: page ? (page - 1) * limit : undefined,
+        offset,
         limit,
         search,
       })

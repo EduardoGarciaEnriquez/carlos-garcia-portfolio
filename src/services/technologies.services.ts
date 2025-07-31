@@ -12,16 +12,16 @@ export const getTechnologiesByPageService = async ({
   search,
 }: {
   offset?: number
-  limit?: number | null
+  limit?: number
   search?: string | null
 }) => {
   const token = sessionStorage.getItem('token') ?? ''
   let params = ''
-  if (offset && limit) {
-    params = params + `offset=${offset}&limit=${limit}&`
+  if (offset !== undefined) {
+    params = params + `offset=${offset}&limit=${limit}`
   }
   if (search) {
-    params = params + `name=${search}`
+    params = params + `&name=${search}`
   }
 
   return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/technologies?${params}`, {
