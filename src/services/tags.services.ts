@@ -5,17 +5,20 @@ export const getTagsByPageService = async ({
   limit = 10,
   search,
 }: {
-  offset: number
+  offset?: number
   limit?: number
   search?: string | null
 }) => {
-  let searchParam = ''
+  let params = ''
+   if (offset !== undefined) {
+    params = params + `offset=${offset}&limit=${limit}`
+  }
   if (search) {
-    searchParam = `&name=${search}`
+    params = `&name=${search}`
   }
   const token = sessionStorage.getItem('token') ?? ''
   return await fetch(
-    `${import.meta.env.VITE_PROJECTS_ENDPOINT}/tags?offset=${offset}&limit=${limit}${searchParam}`,
+    `${import.meta.env.VITE_PROJECTS_ENDPOINT}/tags?${params}`,
     {
       method: 'GET',
       headers: {

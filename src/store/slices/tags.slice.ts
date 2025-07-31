@@ -51,7 +51,7 @@ export const fetchTagsByPage = createAsyncThunk(
   'tags/fetchTagsByPage',
   async (
     {
-      page = 1,
+      page,
       limit = 10,
       search,
     }: {
@@ -62,8 +62,9 @@ export const fetchTagsByPage = createAsyncThunk(
     { dispatch }
   ) => {
     try {
+      const offset = page && (page - 1) * limit
       const response = await getTagsByPageService({
-        offset: (page - 1) * limit,
+        offset,
         limit,
         search,
       })
