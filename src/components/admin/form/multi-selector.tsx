@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Badge from '../../common/badge'
 
 export interface IOption {
@@ -14,7 +14,6 @@ function MultiSelector({
   isDisabled,
   options,
   defaultOptions = [],
-  fetchOptions,
   addOption,
   removeOption,
 }: {
@@ -23,7 +22,6 @@ function MultiSelector({
   isDisabled: boolean
   options: IOption[]
   defaultOptions?: IOption[]
-  fetchOptions: (searchTerm: string) => void
   addOption: (optionId: number) => void
   removeOption: (optionId: number) => void
 }) {
@@ -31,37 +29,21 @@ function MultiSelector({
   const [suggestions, setSuggestions] = useState<IOption[]>([])
   const [selectedOptions, setSelectedOptions] = useState<IOption[]>([])
   const [activeSuggestion, setActiveSuggestion] = useState<number>(0)
+  const [isFocused, setIsFocused] = useState<boolean>(false)
   const inputRef = useRef<HTMLInputElement>(null)
 
   useEffect(() => {
     setActiveSuggestion(0)
-    if (searchTerm.trim() === '') {
-      setSuggestions([])
-      inputRef?.current?.focus()
-      return
-    }
-
-    setTimeout(() => {
-      fetchOptions(searchTerm)
-    }, 1000)
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchTerm])
-
-  useEffect(() => {
     if (options) {
-      if (searchTerm.trim() === '') {
-        setSuggestions([])
-        return
-      }
-
-      const filtered = options.filter(
-        (opt) => !defaultOptions.some((sel) => sel.id === opt.id)
-      )
+      const filtered = options
+        .filter((opt) => !defaultOptions.some((sel) => sel.id === opt.id))
+        .filter(({ label }) =>
+          label.toLowerCase().includes(searchTerm.toLowerCase())
+        )
       setSuggestions(filtered)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [options])
+  }, [options, searchTerm])
 
   useEffect(() => {
     if (defaultOptions) setSelectedOptions(defaultOptions)
@@ -69,13 +51,11 @@ function MultiSelector({
 
   useEffect(() => {
     if (isDisabled) {
-      setSuggestions([])
       setSearchTerm('')
     }
   }, [isDisabled])
 
   const handleSelectOption = (option: IOption) => {
-    setSuggestions([])
     setSearchTerm('')
     addOption(option.id)
   }
@@ -90,9 +70,8 @@ function MultiSelector({
       (e.target as HTMLInputElement).value === '' &&
       selectedOptions.length > 0
     ) {
-      const lastUser = selectedOptions[selectedOptions.length - 1]
-      handleRemoveOption(lastUser)
-      setSuggestions([])
+      const lastOption = selectedOptions[selectedOptions.length - 1]
+      handleRemoveOption(lastOption)
     } else if (e.key === 'ArrowDown' && suggestions?.length > 0) {
       e.preventDefault()
       setActiveSuggestion((prevIndex) =>
@@ -109,6 +88,16 @@ function MultiSelector({
       e.preventDefault()
       handleSelectOption(suggestions[activeSuggestion])
     }
+  }
+
+  const showSuggestions = () => {
+    setIsFocused(true)
+  }
+
+  const hideSuggestions = () => {
+    setTimeout(() => {
+      setIsFocused(false)
+    }, 300)
   }
 
   return (
@@ -162,30 +151,36 @@ function MultiSelector({
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder={placeholder}
             onKeyDown={handleKeyDown}
+            onFocus={showSuggestions}
+            onBlur={hideSuggestions}
           />
           {/* Search Suggestions */}
-          <ul className="max-h-[300px] overflow-y-scroll list-none border-white bg-gray-50 dark:bg-gray-700 w-full mt-1">
-            {suggestions?.map((suggestion: IOption, index: number) => {
-              return (
-                <li
-                  className={`flex items-center gap-2 py-2 px-2 cursor-pointer border-b border-white last:border-none hover:bg-white ${
-                    index === activeSuggestion ? 'bg-white' : ''
-                  }`}
-                  key={suggestion.id + 'suggestions'}
-                  onClick={() => handleSelectOption(suggestion)}
-                >
-                  {suggestion?.image && (
-                    <img
-                      className="h-5"
-                      src={suggestion.image}
-                      alt={`${suggestion.label}`}
-                    />
-                  )}
-                  <span>{suggestion.label}</span>
-                </li>
-              )
-            })}
-          </ul>
+          {isFocused && (
+            <ul className="max-h-[300px] overflow-y-scroll list-none border-white bg-gray-50 dark:bg-gray-700 w-full mt-1">
+              {suggestions?.map((suggestion: IOption, index: number) => {
+                return (
+                  <li
+                    className={`flex items-center gap-2 py-2 px-2 cursor-pointer border-b border-white last:border-none hover:bg-white hover:text-gray-800 ${
+                      index === activeSuggestion
+                        ? 'bg-white text-gray-600 '
+                        : ''
+                    }`}
+                    key={suggestion.id + 'suggestions'}
+                    onMouseDown={() => handleSelectOption(suggestion)}
+                  >
+                    {suggestion?.image && (
+                      <img
+                        className="h-5"
+                        src={suggestion.image}
+                        alt={`${suggestion.label}`}
+                      />
+                    )}
+                    <span>{suggestion.label}</span>
+                  </li>
+                )
+              })}
+            </ul>
+          )}
         </div>
       </div>
     </div>
