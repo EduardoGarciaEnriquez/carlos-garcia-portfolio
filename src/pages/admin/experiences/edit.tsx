@@ -47,16 +47,7 @@ const EditExperiencePage = () => {
     dispatch(
       updateExperience({
         id: experienceId,
-        data: {
-          ...data,
-          companyWebsite:
-            data.companyWebsite !== '' ? data.companyWebsite : undefined,
-          startDate: dayjs(data.startDate).toISOString(),
-          endDate:
-            data?.endDate !== 'Invalid Date'
-              ? dayjs(data.endDate).toISOString()
-              : undefined,
-        },
+        data,
       })
     )
     setEdit(false)
@@ -96,7 +87,7 @@ const EditExperiencePage = () => {
           employmentType,
           location,
           companyWebsite,
-          userId: userId.toString(),
+          userId: userId,
         },
         {
           keepDirty: false,
@@ -183,9 +174,9 @@ const EditExperiencePage = () => {
       type: 'selector',
       error: errors.location?.message,
       name: 'location',
-      options: Object.values(Location).map((loc) => ({
-        label: loc.charAt(0).toUpperCase() + loc.slice(1),
-        value: loc,
+      options: Object.values(Location).map((location) => ({
+        label: location,
+        value: location,
       })),
     },
     {

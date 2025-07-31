@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom'
 
 import { yupResolver } from '@hookform/resolvers/yup'
 
-import dayjs from 'dayjs'
 import Form from '../../../components/admin/form/form'
 import Input from '../../../components/admin/form/input'
 import Selector, {
@@ -15,7 +14,12 @@ import TextArea from '../../../components/admin/form/text'
 import { createExperience } from '../../../store/slices/experiences.slice'
 import { fetchUsersByPage } from '../../../store/slices/users.slice'
 import { AppDispatch, IRootState } from '../../../store/store'
-import { EmploymentType, Location, ICreateExperience } from '../../../types'
+import {
+  EmploymentType,
+  ICreateExperience,
+  IUser,
+  Location,
+} from '../../../types'
 import { createExperienceSchema } from './schema'
 
 const CreateExperiencePage = () => {
@@ -34,15 +38,8 @@ const CreateExperiencePage = () => {
   const navigate = useNavigate()
 
   const onSubmit = (data: ICreateExperience) => {
-    dispatch(
-      createExperience({
-        ...data,
-        companyWebsite:
-          data.companyWebsite !== '' ? data.companyWebsite : undefined,
-        startDate: dayjs(data.startDate).toISOString(),
-        endDate: data?.endDate ? dayjs(data.endDate).toISOString() : undefined,
-      })
-    )
+    console.log(data)
+    dispatch(createExperience(data))
   }
 
   useEffect(() => {
@@ -79,7 +76,7 @@ const CreateExperiencePage = () => {
       type: 'selector',
       error: errors.userId?.message,
       name: 'userId',
-      options: users?.map((user) => {
+      options: users?.map((user: IUser) => {
         return { label: `${user.firstName} ${user.lastName}`, value: user.id }
       }),
       disabled: loadingFetchUsers,
@@ -118,9 +115,9 @@ const CreateExperiencePage = () => {
       type: 'selector',
       error: errors.location?.message,
       name: 'location',
-      options: Object.values(Location).map((loc) => ({
-        label: loc.charAt(0).toUpperCase() + loc.slice(1),
-        value: loc,
+      options: Object.values(Location).map((location) => ({
+        label: location,
+        value: location,
       })),
     },
     {
