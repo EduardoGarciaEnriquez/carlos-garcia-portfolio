@@ -1,54 +1,117 @@
-# Astro Starter Kit: Basics
+# Eduardo Enriquez Portfolio
 
-```sh
-npm create astro@latest -- --template basics
-```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+A modern portfolio web application built with **React**, **Redux Toolkit**, **Vite**, **TypeScript**, and **Tailwind CSS**. Includes admin features, project management, and user authentication.
 
 ## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
+```
 /
 ├── public/
-│   └── favicon.svg
+│   ├── favicon.svg
+│   └── projects/
+│       ├── dino-lab.webp
+│       ├── forecast-weather.webp
+│       └── skull-game.webp
 ├── src/
+│   ├── App.tsx
+│   ├── index.css
+│   ├── main.tsx
+│   ├── setupTests.ts
+│   ├── assets/
+│   │   ├── moon.svg
+│   │   └── sun.svg
 │   ├── components/
-│   │   └── Card.astro
+│   │   ├── admin/
+│   │   ├── common/
+│   │   ├── home/
+│   │   ├── icons/
 │   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── pages/
+│   │   └── admin/
+│   │       └── projects/
+│   ├── services/
+│   ├── store/
+│   │   └── slices/
+│   ├── types/
+│   └── utils/
+├── .env
+├── .env.local
+├── package.json
+├── tsconfig.json
+├── vite.config.ts
+├── tailwind.config.js
+├── postcss.config.mjs
+├── jest.setup.js
+├── cypress.config.ts
+└── README.md
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🛠️ Tech Stack
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- **React** & **TypeScript**
+- **Redux Toolkit** for state management
+- **Vite** for fast development/build
+- **Tailwind CSS** for styling
+- **Jest** & **React Testing Library** for unit tests
+- **Cypress** for end-to-end testing
 
-Any static assets, like images, can be placed in the `public/` directory.
+## 📦 Setup & Development
 
-## 🧞 Commands
+1. **Install dependencies:**
 
-All commands are run from the root of the project, from a terminal:
+   ```sh
+   npm install
+   ```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+2. **Start development server:**
 
-## 👀 Want to learn more?
+   ```sh
+   npm run dev
+   ```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+   The app runs at `http://localhost:5173` by default.
+
+3. **Build for production:**
+
+   ```sh
+   npm run build
+   ```
+
+4. **Preview production build:**
+   ```sh
+   npm run preview
+   ```
+
+## 🧪 Testing
+
+- **Unit tests:**
+  ```sh
+  npm run test
+  ```
+- **E2E tests (Cypress):**
+  ```sh
+  npm run cypress
+  ```
+
+## 🗂️ Key Features
+
+- Admin dashboard for managing projects and users
+- Project CRUD operations
+- File upload for project covers
+- Notifications and error handling
+- Responsive design
+
+## 📄 Environment Variables
+
+Configure `.env` and `.env.local` for API endpoints and secrets.
+
+## 🤝 Contributing
+
+Feel free to open issues or submit PRs!
+
+## 📚 Learn More
+
+- [React Documentation](https://react.dev/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
