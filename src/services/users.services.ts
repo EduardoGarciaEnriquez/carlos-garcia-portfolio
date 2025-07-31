@@ -18,7 +18,7 @@ export const getUsersByPageService = async ({
   const token = sessionStorage.getItem('token') ?? ''
 
   return await fetch(
-    `http://localhost:8080/api/v1/users?offset=${offset}&limit=${limit}${searchParam}`,
+    `${import.meta.env.VITE_PROJECTS_ENDPOINT}/users?offset=${offset}&limit=${limit}${searchParam}`,
     {
       method: 'GET',
       headers: {
@@ -37,7 +37,7 @@ export const getUsersByPageService = async ({
 }
 
 export const getUserByIdService = async (id: number | string) => {
-  return await fetch(`http://localhost:8080/api/v1/users/${id}`)
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/users/${id}`)
     .then((response) => {
       if (response.ok === true) return response.json()
       throw new Error('Failed to fetch user')
@@ -53,7 +53,7 @@ export const createUserService = async ({
   data: IUpdateUserFormData
 }): Promise<IUser> => {
   const token = sessionStorage.getItem('token') ?? ''
-  return await fetch(`http://localhost:8080/api/v1/users`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/users`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ export const editUserService = async ({
   id: string | number
 }): Promise<IUser> => {
   const token = sessionStorage.getItem('token') ?? ''
-  return await fetch(`http://localhost:8080/api/v1/users/${id}`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/users/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -96,15 +96,19 @@ export const editUserService = async ({
 }
 
 export const uploadAvatarService = async (file: File) => {
+  const cloudinary_name = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME
   const data = new FormData()
   data.append('file', file)
   data.append('upload_preset', 'portfolio_avatar_presets')
-  data.append('cloud_name', 'dgri2oqoj')
+  data.append('cloud_name', cloudinary_name)
 
-  return await fetch('https://api.cloudinary.com/v1_1/dgri2oqoj/image/upload', {
-    method: 'POST',
-    body: data,
-  })
+  return await fetch(
+    `https://api.cloudinary.com/v1_1/${cloudinary_name}/image/upload`,
+    {
+      method: 'POST',
+      body: data,
+    }
+  )
     .then((response) => response.json())
     .catch((error) => {
       console.error(error)
@@ -113,7 +117,7 @@ export const uploadAvatarService = async (file: File) => {
 
 export const deleteUserService = async (id: number): Promise<IUser> => {
   const token = sessionStorage.getItem('token') ?? ''
-  return await fetch(`http://localhost:8080/api/v1/users/${id}`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/users/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',

@@ -24,7 +24,7 @@ export const getTechnologiesByPageService = async ({
     params = params + `name=${search}`
   }
 
-  return await fetch(`http://localhost:8080/api/v1/technologies?${params}`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/technologies?${params}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ export const getTechnologiesByPageService = async ({
 
 export const getTechnologyByIdService = async (id: number) => {
   const token = sessionStorage.getItem('token') ?? ''
-  return await fetch(`http://localhost:8080/api/v1/technologies/${id}`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/technologies/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ export const createTechnologyService = async (
   data: ICreateTechnology
 ): Promise<ITechnology> => {
   const token = sessionStorage.getItem('token') ?? ''
-  return await fetch(`http://localhost:8080/api/v1/technologies`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/technologies`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ export const updateTechnologyService = async ({
   data: IUpdateTechnology
 }): Promise<ITechnology> => {
   const token = sessionStorage.getItem('token') ?? ''
-  return await fetch(`http://localhost:8080/api/v1/technologies/${id}`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/technologies/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -108,7 +108,7 @@ export const deleteTechnologyService = async (
   id: number
 ): Promise<ITechnology> => {
   const token = sessionStorage.getItem('token') ?? ''
-  return await fetch(`http://localhost:8080/api/v1/technologies/${id}`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/technologies/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -125,15 +125,19 @@ export const deleteTechnologyService = async (
 }
 
 export const uploadTechnologyIconService = async (file: File) => {
+  const cloudinary_name = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME
   const data = new FormData()
   data.append('file', file)
   data.append('upload_preset', 'portfolio_technologies_presets')
-  data.append('cloud_name', 'dgri2oqoj')
+  data.append('cloud_name', cloudinary_name)
 
-  return await fetch('https://api.cloudinary.com/v1_1/dgri2oqoj/image/upload', {
-    method: 'POST',
-    body: data,
-  })
+  return await fetch(
+    `https://api.cloudinary.com/v1_1/${cloudinary_name}/image/upload`,
+    {
+      method: 'POST',
+      body: data,
+    }
+  )
     .then((response) => response.json())
     .catch((error) => {
       console.error(error)
@@ -144,7 +148,7 @@ export const addTagToTechnologyService = async (
   data: IAddTag
 ): Promise<ITechnology> => {
   const token = sessionStorage.getItem('token') ?? ''
-  return await fetch(`http://localhost:8080/api/v1/technologies/add-tag`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/technologies/add-tag`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -165,7 +169,7 @@ export const removeTagFromTechnologyService = async (
   data: IRemoveTag
 ): Promise<ITechnology> => {
   const token = sessionStorage.getItem('token') ?? ''
-  return await fetch(`http://localhost:8080/api/v1/technologies/remove-tag`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/technologies/remove-tag`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

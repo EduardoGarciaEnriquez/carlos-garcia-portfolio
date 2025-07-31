@@ -5,7 +5,7 @@ export const loginUser = async ({
   email: string
   password: string
 }) => {
-  return await fetch(`http://localhost:8080/api/v1/auth/login`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/auth/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -22,7 +22,7 @@ export const loginUser = async ({
 }
 
 export const sendRecoveryEmail = async (email: string) => {
-  return await fetch(`http://localhost:8080/api/v1/auth/recover-password`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/auth/recover-password`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ export const updatePassword = async ({
   token: string
   password: string
 }) => {
-  return await fetch(`http://localhost:8080/api/v1/auth/change-password`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/auth/change-password`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

@@ -22,7 +22,7 @@ export const getProjectsByPageService = async ({
   }
 
   return await fetch(
-    `http://localhost:8080/api/v1/projects?offset=${offset}&limit=${limit}${searchParam}`,
+    `${import.meta.env.VITE_PROJECTS_ENDPOINT}/projects?offset=${offset}&limit=${limit}${searchParam}`,
     {
       method: 'GET',
       headers: {
@@ -42,7 +42,7 @@ export const getProjectsByPageService = async ({
 
 export const getProjectByIdService = async (id: number) => {
   const token = sessionStorage.getItem('token') ?? ''
-  return await fetch(`http://localhost:8080/api/v1/projects/${id}`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/projects/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ export const createProjectService = async (
   data: ICreateProject
 ): Promise<IProject> => {
   const token = sessionStorage.getItem('token') ?? ''
-  return await fetch(`http://localhost:8080/api/v1/projects`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/projects`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ export const updateProjectService = async ({
   data: IUpdateProject
 }): Promise<IProject> => {
   const token = sessionStorage.getItem('token') ?? ''
-  return await fetch(`http://localhost:8080/api/v1/projects/${id}`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/projects/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -106,7 +106,7 @@ export const updateProjectService = async ({
 
 export const deleteProjectService = async (id: number): Promise<IProject> => {
   const token = sessionStorage.getItem('token') ?? ''
-  return await fetch(`http://localhost:8080/api/v1/projects/${id}`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/projects/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -124,14 +124,18 @@ export const deleteProjectService = async (id: number): Promise<IProject> => {
 
 export const uploadProjectCoverService = async (file: File) => {
   const data = new FormData()
+  const cloudinary_name = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME
   data.append('file', file)
   data.append('upload_preset', 'portfolio_projects_presets')
-  data.append('cloud_name', 'dgri2oqoj')
+  data.append('cloud_name', cloudinary_name)
 
-  return await fetch('https://api.cloudinary.com/v1_1/dgri2oqoj/image/upload', {
-    method: 'POST',
-    body: data,
-  })
+  return await fetch(
+    `https://api.cloudinary.com/v1_1/${cloudinary_name}/image/upload`,
+    {
+      method: 'POST',
+      body: data,
+    }
+  )
     .then((response) => response.json())
     .catch((error) => {
       console.error(error)
@@ -142,7 +146,7 @@ export const addTechnologyToProjectService = async (
   data: IAddTechnology
 ): Promise<IProject> => {
   const token = sessionStorage.getItem('token') ?? ''
-  return await fetch(`http://localhost:8080/api/v1/projects/add-tech`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/projects/add-tech`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -163,7 +167,7 @@ export const removeTechnologyFromProjectService = async (
   data: IRemoveTechnology
 ): Promise<IProject> => {
   const token = sessionStorage.getItem('token') ?? ''
-  return await fetch(`http://localhost:8080/api/v1/projects/remove-tech`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/projects/remove-tech`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

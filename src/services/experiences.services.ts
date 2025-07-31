@@ -13,7 +13,7 @@ export const getExperiencesByPageService = async ({
   const searchParam = search ? `&company=${search}` : ''
 
   return await fetch(
-    `http://localhost:8080/api/v1/experiences?offset=${offset}&limit=${limit}${searchParam}`,
+    `${import.meta.env.VITE_PROJECTS_ENDPOINT}/experiences?offset=${offset}&limit=${limit}${searchParam}`,
     {
       method: 'GET',
       headers: {
@@ -33,7 +33,7 @@ export const getExperiencesByPageService = async ({
 
 export const getExperienceByIdService = async (id: number) => {
   const token = sessionStorage.getItem('token') ?? ''
-  return await fetch(`http://localhost:8080/api/v1/experiences/${id}`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/experiences/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ export const createExperienceService = async (
   data: ICreateExperience
 ): Promise<IExperience> => {
   const token = sessionStorage.getItem('token') ?? ''
-  return await fetch(`http://localhost:8080/api/v1/experiences`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/experiences`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ export const updateExperienceService = async ({
   data: IUpdateExperience
 }): Promise<IExperience> => {
   const token = sessionStorage.getItem('token') ?? ''
-  return await fetch(`http://localhost:8080/api/v1/experiences/${id}`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/experiences/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -99,7 +99,7 @@ export const deleteExperienceService = async (
   id: number
 ): Promise<IExperience> => {
   const token = sessionStorage.getItem('token') ?? ''
-  return await fetch(`http://localhost:8080/api/v1/experiences/${id}`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/experiences/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',

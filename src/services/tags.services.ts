@@ -15,7 +15,7 @@ export const getTagsByPageService = async ({
   }
   const token = sessionStorage.getItem('token') ?? ''
   return await fetch(
-    `http://localhost:8080/api/v1/tags?offset=${offset}&limit=${limit}${searchParam}`,
+    `${import.meta.env.VITE_PROJECTS_ENDPOINT}/tags?offset=${offset}&limit=${limit}${searchParam}`,
     {
       method: 'GET',
       headers: {
@@ -35,7 +35,7 @@ export const getTagsByPageService = async ({
 
 export const getTagsByIdService = async (id: number) => {
   const token = sessionStorage.getItem('token') ?? ''
-  return await fetch(`http://localhost:8080/api/v1/tags/${id}`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/tags/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ export const getTagsByIdService = async (id: number) => {
 
 export const createTagService = async (data: ICreateTag): Promise<ITag> => {
   const token = sessionStorage.getItem('token') ?? ''
-  return await fetch(`http://localhost:8080/api/v1/tags`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/tags`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ export const updateTagService = async ({
   data: IUpdateTag
 }): Promise<ITag> => {
   const token = sessionStorage.getItem('token') ?? ''
-  return await fetch(`http://localhost:8080/api/v1/tags/${id}`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/tags/${id}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ export const updateTagService = async ({
 
 export const deleteTagService = async (id: number): Promise<ITag> => {
   const token = sessionStorage.getItem('token') ?? ''
-  return await fetch(`http://localhost:8080/api/v1/tags/${id}`, {
+  return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/tags/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
