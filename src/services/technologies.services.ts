@@ -21,7 +21,7 @@ export const getTechnologiesByPageService = async ({
     params = params + `offset=${offset}&limit=${limit}`
   }
   if (search) {
-    params = params + `&name=${search}`
+    params = `&name=${search}`
   }
 
   return await fetch(`${import.meta.env.VITE_PROJECTS_ENDPOINT}/technologies?${params}`, {
