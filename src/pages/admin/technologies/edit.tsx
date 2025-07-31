@@ -274,8 +274,8 @@ const EditTechnologyPage = () => {
             })
           )
         }
-        label="Technologies"
-        placeholder="Search and select technology"
+        label="Tags"
+        placeholder="Search and select tag"
       />
     </Form>
   )
