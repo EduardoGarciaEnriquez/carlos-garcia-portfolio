@@ -27,6 +27,12 @@ import { AppDispatch, IRootState } from '../../../store/store'
 import { IUpdateTechnology } from '../../../types'
 import { editTechnologySchema } from './schema'
 
+interface IOption {
+  id: number
+  label: string
+  color: string
+}
+
 const EditTechnologyPage = () => {
   const {
     register,
@@ -49,6 +55,7 @@ const EditTechnologyPage = () => {
   const [file, setFile] = useState<string | null>(null)
   const [uploading, setUploading] = useState(false)
   const [url, setUrl] = useState<string | null>(null)
+  const [multiSelectOptions, setMultiSelectOptions] = useState<IOption[]>([])
 
   const handleOnChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
@@ -79,9 +86,17 @@ const EditTechnologyPage = () => {
   useEffect(() => {
     if (technologyId) {
       dispatch(fetchTechnologyById(technologyId))
+      dispatch(fetchTagsByPage({}))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [technologyId])
+
+  useEffect(() => {
+    const options = tags?.map((tag) => {
+      return { id: tag.id, label: tag.name, color: tag.color }
+    })
+    setMultiSelectOptions(options)
+  }, [tags])
 
   useEffect(() => {
     if (technology) {
@@ -192,10 +207,6 @@ const EditTechnologyPage = () => {
     },
   ]
 
-  const multiSelectOptions = tags?.map((tag) => {
-    return { id: tag.id, label: tag.name, color: tag.color }
-  })
-
   const multiSelectDefaultOptions = technology?.tags?.map((tag) => {
     return {
       id: tag.id,
@@ -257,7 +268,6 @@ const EditTechnologyPage = () => {
         isDisabled={!edit}
         options={multiSelectOptions}
         defaultOptions={multiSelectDefaultOptions}
-        fetchOptions={(search) => dispatch(fetchTagsByPage({ search }))}
         addOption={(tagId: number) =>
           dispatch(
             addTagToTechnology({

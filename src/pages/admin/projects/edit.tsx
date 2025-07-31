@@ -85,6 +85,7 @@ const EditProjectPage = () => {
     if (projectId) {
       dispatch(fetchProjectById(projectId))
       dispatch(fetchUsersByPage({ page: 1 }))
+      dispatch(fetchTechnologiesByPage({}))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [projectId])
@@ -256,7 +257,7 @@ const EditProjectPage = () => {
         isDisabled={!edit}
         options={multiSelectOptions}
         defaultOptions={multiSelectDefaultOptions}
-        fetchOptions={(search) => dispatch(fetchTechnologiesByPage({ search }))}
+        // fetchOptions={(search) => dispatch(fetchTechnologiesByPage({ search }))}
         addOption={(technologyId: number) =>
           dispatch(
             addTechnology({
