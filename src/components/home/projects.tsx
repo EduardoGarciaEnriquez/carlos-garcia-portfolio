@@ -5,11 +5,11 @@ import { IProject, ITechnology } from '../../types'
 import Pill from './pill'
 import GitHubIcon from '../icons/gitHub'
 import EyeIcon from '../icons/eye'
+import NotionIcon from '../icons/notion'
 
 const Projects = ({ projects }: { projects: IProject[] }) => {
   return (
     <Carousel
-      // arrows={window.innerWidth > 428 ? true : false}
       arrows={false}
       autoPlaySpeed={3000}
       autoPlay={true}
@@ -57,38 +57,8 @@ function ProjectItem({
   technologies,
   domain,
   repo,
+  details,
 }: IProject) {
-  // return (
-  //   <article className="my-10 pb-2 border-b-[1px] border-solid border-gray-400">
-  //     <h3 className="text-xl font-semibold text-yellow-100/90">{name}</h3>
-  //     <p className="mt-2 text-pretty text-base font-normal text-gray-500 dark:text-gray-400">
-  //       {description}
-  //     </p>
-  //     <ul className="mt-4 flex flex-wrap gap-4 justify-normal">
-  //       {technologies.map((technology: ITechnology) => (
-  //         <Pill key={technology.id} href="">
-  //           <img src={technology.icon} alt="" className="size-5 md:size-4" />{' '}
-  //           <span className="hidden md:block">{technology.name}</span>
-  //         </Pill>
-  //       ))}
-  //     </ul>
-  //     <img
-  //       src={cover}
-  //       alt={`SS from ${name}`}
-  //       className="rounded-md shadow-lg shadow-white/10 mt-4"
-  //     />
-  //     <div className="mt-4 flex flex-wrap gap-4 justify-center">
-  //       <Pill href={domain}>
-  //         <EyeIcon className="size-5 md:size-4" />
-  //         <span className="hidden md:block"> Visit </span>
-  //       </Pill>
-  //       <Pill href={repo}>
-  //         <GitHubIcon className="size-5 md:size-4" />
-  //         <span className="hidden md:block"> GitHub </span>
-  //       </Pill>
-  //     </div>
-  //   </article>
-  // )
   return (
     <article className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 mx-2 h-full relative pb-8">
       <img
@@ -112,14 +82,24 @@ function ProjectItem({
           {description}
         </p>
         <div className="mt-4 flex flex-wrap gap-4 justify-center absolute bottom-2 left-0 right-0">
-          <Pill href={domain}>
-            <EyeIcon className="size-5 md:size-4" />
-            <span className="hidden lg:block"> Visit </span>
-          </Pill>
-          <Pill href={repo}>
-            <GitHubIcon className="size-5 md:size-4" />
-            <span className="hidden lg:block"> GitHub </span>
-          </Pill>
+          {domain && (
+            <Pill href={domain}>
+              <EyeIcon className="size-5 md:size-4" />
+              <span className="hidden lg:block"> Visit </span>
+            </Pill>
+          )}
+          {repo && (
+            <Pill href={repo}>
+              <GitHubIcon className="size-5 md:size-4" />
+              <span className="hidden lg:block"> GitHub </span>
+            </Pill>
+          )}
+          {details && (
+            <Pill href={details}>
+              <NotionIcon className="size-5 md:size-4" />
+              <span className="hidden lg:block"> Details </span>
+            </Pill>
+          )}
         </div>
       </div>
     </article>

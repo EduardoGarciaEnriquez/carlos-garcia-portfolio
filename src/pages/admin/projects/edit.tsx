@@ -232,6 +232,13 @@ const EditProjectPage = () => {
       error: errors.repo?.message,
       name: 'repo',
     },
+    {
+      label: 'Details',
+      type: 'url',
+      placeholder: 'Enter your project details URL (notion)',
+      error: errors.details?.message,
+      name: 'details',
+    },
   ]
 
   const multiSelectOptions = technologies?.map((technology) => {

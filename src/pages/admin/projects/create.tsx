@@ -17,7 +17,7 @@ import { uploadProjectCoverService } from '../../../services/projects.services'
 import { createProject } from '../../../store/slices/projects.slice'
 import { fetchUsersByPage } from '../../../store/slices/users.slice'
 import { AppDispatch, IRootState } from '../../../store/store'
-import { IUpdateProject } from '../../../types'
+import { ICreateProject } from '../../../types'
 import { createProjectSchema } from './schemas'
 
 const CreateProjectPage = () => {
@@ -25,7 +25,7 @@ const CreateProjectPage = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IUpdateProject>({
+  } = useForm<ICreateProject>({
     resolver: yupResolver(createProjectSchema),
   })
   const { users, loadingFetchUsers } = useSelector(
@@ -54,7 +54,7 @@ const CreateProjectPage = () => {
     }
   }
 
-  const onSubmit = (data: IUpdateProject) => {
+  const onSubmit = (data: ICreateProject) => {
     dispatch(createProject({ ...data, cover: url ?? undefined }))
   }
 
@@ -106,7 +106,7 @@ const CreateProjectPage = () => {
     type: React.InputHTMLAttributes<HTMLInputElement>['type']
     placeholder?: string
     error?: string
-    name: keyof IUpdateProject
+    name: keyof ICreateProject
     options?: ISelectorOption[]
     isMulti?: boolean
     disabled?: boolean
