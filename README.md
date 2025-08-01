@@ -1,4 +1,4 @@
-# Eduardo Enriquez Portfolio
+# Carlos Garcia Portfolio
 
 A modern portfolio web application built with **React**, **Redux Toolkit**, **Vite**, **TypeScript**, and **Tailwind CSS**. Includes admin features, project management, and user authentication.
 
@@ -57,6 +57,10 @@ A modern portfolio web application built with **React**, **Redux Toolkit**, **Vi
 
 ## 📦 Setup & Development
 
+### Prerequisites
+- Node.js 20+
+- npm 9+
+
 1. **Install dependencies:**
 
    ```sh
@@ -69,7 +73,7 @@ A modern portfolio web application built with **React**, **Redux Toolkit**, **Vi
    npm run dev
    ```
 
-   The app runs at `http://localhost:5173` by default.
+   The app runs at `http://localhost:3000` by default.
 
 3. **Build for production:**
 
@@ -82,7 +86,7 @@ A modern portfolio web application built with **React**, **Redux Toolkit**, **Vi
    npm run preview
    ```
 
-## 🧪 Testing
+### 🧪 Testing
 
 - **Unit tests:**
   ```sh
@@ -92,6 +96,19 @@ A modern portfolio web application built with **React**, **Redux Toolkit**, **Vi
   ```sh
   npm run cypress
   ```
+
+### Docker Usage
+
+- **Build & Run with Docker**
+```bash
+docker build -t carlos-garcia-portfolio .
+docker run -p 3000:300 carlos-garcia-portfolio
+```
+
+- **Using Docker Compose**
+```bash
+docker-compose up --build
+```
 
 ## 🗂️ Key Features
 
@@ -103,11 +120,7 @@ A modern portfolio web application built with **React**, **Redux Toolkit**, **Vi
 
 ## 📄 Environment Variables
 
-Configure `.env` and `.env.local` for API endpoints and secrets.
-
-## 🤝 Contributing
-
-Feel free to open issues or submit PRs!
+Configure `.env` for API endpoints and secrets.
 
 ## 📚 Learn More
 
@@ -115,3 +128,7 @@ Feel free to open issues or submit PRs!
 - [Redux Toolkit](https://redux-toolkit.js.org/)
 - [Vite](https://vitejs.dev/)
 - [Tailwind CSS](https://tailwindcss.com/)
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
