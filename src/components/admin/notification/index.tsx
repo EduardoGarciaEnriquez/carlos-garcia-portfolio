@@ -52,7 +52,7 @@ function Notification() {
 
   return ReactDOM.createPortal(
     <div
-      className={`absolute bottom-0 left-0 right-0 ${
+      className={`fixed bottom-0 left-0 right-0 ${
         !isNotificationVisible && 'hidden'
       }`}
     >
