@@ -8,6 +8,9 @@ import {
   Routes,
 } from 'react-router-dom'
 
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
 import AdminLayout from './layouts/admin'
 import HomeLayout from './layouts/home'
 import ExperiencesPage from './pages/admin/experiences'
@@ -41,6 +44,13 @@ function App() {
       document.body.removeAttribute('class')
     }
   }, [isThemeDark])
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, // Global animation duration
+      once: false, // Only once animation
+    })
+  }, [])
 
   return (
     <BrowserRouter
