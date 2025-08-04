@@ -52,6 +52,8 @@ function TechnologyItem({
       onBlur={() => setIsFocused(false)}
       className="flex flex-col gap-2 items-center border dark:border-white/10 dark:bg-white/5 border-black/10 bg-black/5 text-md p-3 md:rounded-sm rounded-full 
       hover:bg-white/10 md:w-[20%] relative"
+      data-aos="fade-up"
+      data-aos-anchor-placement="bottom-bottom"
     >
       <img src={icon} alt={`${name} icon`} className="size-5 md:size-11" />
       <span className="hidden md:block text-sm">{name}</span>
