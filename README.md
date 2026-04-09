@@ -102,7 +102,7 @@ A modern portfolio web application built with **React**, **Redux Toolkit**, **Vi
 - **Build & Run with Docker**
 ```bash
 docker build -t carlos-garcia-portfolio .
-docker run -p 3000:300 carlos-garcia-portfolio
+docker run -p 3000:3000 carlos-garcia-portfolio
 ```
 
 - **Using Docker Compose**
